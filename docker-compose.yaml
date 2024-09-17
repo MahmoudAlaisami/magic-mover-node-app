@@ -1,0 +1,12 @@
+services:
+  mongodb:
+    container_name: "whitepapers_mongodb"
+    image: mongo:7.0.7
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+
+
+volumes:
+  dbdata6:
