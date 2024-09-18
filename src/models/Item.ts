@@ -1,8 +1,8 @@
 import { model, Schema, Model } from "mongoose";
-import { ItemInterface } from "../utils/types/models.t";
+import { IItem } from "../utils/types/models.t";
 import { Mode } from "fs";
 
-const ItemSchema: Schema<ItemInterface> = new Schema({
+const ItemSchema: Schema<IItem> = new Schema({
   name: {
     type: String,
   },
@@ -13,8 +13,12 @@ const ItemSchema: Schema<ItemInterface> = new Schema({
     type: Map,
     of: Number
   },
+  is_deleted: {
+    type: Boolean,
+    default: false
+  }
 });
 
-const Item: Model<ItemInterface> = model("Item", ItemSchema);
+const Item: Model<IItem> = model("Item", ItemSchema);
 
 export default Item;

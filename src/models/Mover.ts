@@ -1,7 +1,7 @@
 import { model, Schema, Model } from "mongoose";
-import { MoverInterface } from "../utils/types/models.t";
+import { IMover } from "../utils/types/models.t";
 
-const MoverSchema: Schema<MoverInterface> = new Schema({
+const MoverSchema: Schema<IMover> = new Schema({
   weight_limit: {
     type: Number,
     required: [true, "weight limit cannot be empty"],
@@ -24,8 +24,12 @@ const MoverSchema: Schema<MoverInterface> = new Schema({
     required: [true, "level cannot be empty"],
     default: 1,
   },
+  is_deleted: {
+    type: Boolean,
+    default: false
+  }
 });
 
-const Mover: Model<MoverInterface> = model("Mover", MoverSchema);
+const Mover: Model<IMover> = model("Mover", MoverSchema);
 
 export default Mover;
