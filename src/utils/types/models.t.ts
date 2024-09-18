@@ -1,10 +1,11 @@
 import { Document, Schema } from "mongoose";
 
 export interface IMover extends Document {
+  username: String;
   weight_limit: Number;
   energy: Number;
   state: String;
-  item_carried: Schema.Types.ObjectId;
+  item_carried?: Schema.Types.ObjectId | null;
   level: Number;
   is_deleted: Boolean;
 }
