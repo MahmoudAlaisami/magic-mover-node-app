@@ -3,7 +3,6 @@ export { default as GetetByLevel } from "./getByLevel";
 export { default as GetById } from "./getById";
 export { default as Create } from "./create";
 export { default as UpdateState } from "./updateState";
-export { default as UpdateCarriedItem } from "./updateCarriedItem";
 export { default as Upgrade } from "./upgrade";
 export { default as Downgrade } from "./downgrade";
 export { default as SoftDelete } from "./softDelete";

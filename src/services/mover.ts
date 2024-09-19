@@ -36,7 +36,7 @@ const moverService = {
     }
   },
 
-  create: async (data) => {
+  create: async (data: Partial<IMover>): Promise<IMover> => {
     try {
       const mover = await Mover.create(data);
       return mover;
@@ -45,7 +45,7 @@ const moverService = {
     }
   },
 
-  updateState: async (mover: IMover, sateId: string): Promise<IMover> => {
+  update: async (mover: IMover, sateId: string, isConsuming: boolean, item?: string): Promise<IMover> => {
     try {
       // console.log(".... new state", sateId);
       // const mover = await Mover.findOne({ _id: mover._id, is_deleted: false });
@@ -55,7 +55,9 @@ const moverService = {
       const updatedMover = await Mover.findByIdAndUpdate(
         mover._id,
         {
+          item_carried: item,
           state: sateId,
+          energy: isConsuming == true ? mover.energy - 20 : mover.energy
         },
         { new: true },
       );
@@ -67,25 +69,21 @@ const moverService = {
     }
   },
 
-  updateCarriedItem: async (id: string, newItem: string): Promise<IMover> => {
+  consumeEnergy: async (id: string): Promise<IMover> => {
     try {
-      const mover = await Mover.findOne({ _id: id, is_deleted: false });
-      if (!mover) throw new Error("Invalid Mover");
-
-      const { item_carried, ..._mover } = mover;
+      const mover = await Mover.findOne({_id: id, is_deleted: false})
       const updatedMover = await Mover.findByIdAndUpdate(
         id,
         {
-          ..._mover,
-          item: newItem,
+          energy: mover.energy - 20,
         },
         { new: true },
       );
       if (!updatedMover) throw new Error("Something went wrong");
-
+console.log('.... consumeEnergy',updatedMover);
       return updatedMover;
     } catch (error) {
-      throw new Error(`Failed to update Carried Item: ${error.message}`);
+      throw new Error(`Failed to update state: ${error.message}`);
     }
   },
 

@@ -12,15 +12,30 @@ export default async (req, res, next) => {
 
     const mover = await moverService.findOneById(id);
     const closedState = await eventService.closeEvent(mover.state);
+    const item = await itemService.findOneById(magic_item_id);
 
     let endDate: number | undefined;
     if (magic_item_id) {
-      const { loading_time } = await itemService.findOneById(magic_item_id);
+      const { loading_time } = item
       endDate = getEndDate(newState, loading_time);
     } else {
       endDate = getEndDate(newState);
     }
     console.log('.... endDate',endDate);
+
+    if(item.weight > mover.weight_limit * 0.85) {
+      if(item.weight > mover.weight_limit * 0.85) {
+        return res.status(HttpStatusCode.BadRequest).send({ success: false, payload: "Item is too heavy!"})
+      }
+      return res.status(HttpStatusCode.BadRequest).send({ success: false, payload: "Pick a lighter Item!"})
+    }
+
+    if(newState == "loading") {
+      if(mover.energy < 20) {
+        return res.status(HttpStatusCode.BadRequest).send({ success: false, payload: "Not enough Energy!"})
+      }
+      await moverService.consumeEnergy(mover._id.toString())
+    }
 
     const event = await eventService.create({
       active: true,
@@ -31,7 +46,7 @@ export default async (req, res, next) => {
       end_date: endDate !== 0 ? addMilliseconds(new Date(), endDate) : undefined,
     });
 
-    const updatedMover = await moverService.updateState(mover, event._id.toString())
+    const updatedMover = await moverService.update(mover, event._id.toString(), newState == "loading" ? true: false, magic_item_id)
 
     res.status(HttpStatusCode.Ok).send({ success: true, payload: { updatedMover, event } });
   } catch (error) {

@@ -24,7 +24,7 @@ export default async (req, res, next) => {
     });
     console.log('.... event',event);
     const moverId = mover._id.toString()
-    const moverWithStatus = await moverService.updateState(mover, event._id.toString());
+    const moverWithStatus = await moverService.update(mover, event._id.toString(), false);
 
     res.status(HttpStatusCode.Ok).send({ success: true, payload: { moverWithStatus, event } });
   } catch (error) {
