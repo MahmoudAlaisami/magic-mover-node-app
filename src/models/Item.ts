@@ -4,17 +4,20 @@ import { IItem } from "../utils/types/models.t";
 const ItemSchema: Schema<IItem> = new Schema({
   name: {
     type: String,
+    required: [true, "name cannot be empty"],
   },
   weight: {
     type: Number,
+    required: [true, "weight cannot be empty"],
   },
   loading_time: {
-    type: Map,
-    of: Number
+    type: Number,
+    required: [true, "loading time cannot be empty"],
   },
   is_deleted: {
     type: Boolean,
-    default: false
+    default: false,
+    required: [true, "is_deleted state cannot be empty"],
   }
 });
 
