@@ -1,20 +1,28 @@
-import express, { Express, Request, Response } from "express";
-import { TcreateApp } from "./utils/types/app.t";
+import express, { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
-
+import moverRouter from "./http/routes/mover"
 
 const createApp = () => {
+  const app: Express = express();
 
-const app: Express = express();
+  app.use(cors());
+  app.use(express.json());
 
-app.use(cors())
-app.use(express.json())
+  app.use("/", (req: Request, res: Response, next: NextFunction) => {
+    // console.log("....", {body: req.body})
+    next();
+  });
 
-app.get("/", (req, res)=> {
-  res.send("Hello world!")
-})
 
-return app;
-}
+  app.use("/api/mover", moverRouter)
 
-export default createApp
+
+
+  app.get("/", (req: Request, res: Response) => {
+    res.send("<h1>Hello world!</h1>");
+  });
+
+  return app;
+};
+
+export default createApp;

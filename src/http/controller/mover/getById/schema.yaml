@@ -1,0 +1,7 @@
+properties:
+  body:
+    type: object
+    properties: {}
+    required: []
+    additionalProperties: true
+additionalProperties: true

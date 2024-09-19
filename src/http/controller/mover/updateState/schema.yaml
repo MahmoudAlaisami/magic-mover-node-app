@@ -1,0 +1,13 @@
+properties:
+  body:
+    type: object
+    properties:
+      id:
+        type: string
+      newState:
+        type: string
+    required:
+      - id
+      - newState
+    additionalProperties: false
+additionalProperties: true

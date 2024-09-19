@@ -18,7 +18,7 @@ const MoverSchema: Schema<IMover> = new Schema({
   },
   state: {
     type: String,
-    enum: ["resting", "loading", "in mission", "mission done"],
+    enum: ["resting", "ready", "loading", "in mission", "mission done"],
     required: [true, "state cannot be empty"],
   },
   item_carried: {

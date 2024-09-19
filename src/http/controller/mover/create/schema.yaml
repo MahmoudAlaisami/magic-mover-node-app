@@ -1,0 +1,30 @@
+properties:
+  body:
+    properties:
+      username:
+        type: string
+      # weight_limit:
+      #   type: string
+      # energy:
+      #   type: Number
+      # state:
+      #   type: string
+      #   enum:
+      #     - resting
+      #     - ready
+      #     - loading
+      #     - in mission
+      #     - mission done
+      # level:
+      #   type: Number
+      # is_deleted:
+      #   type: boolean
+    required:
+      - username
+      # - weight_limit
+      # - energy
+      # - state
+      # - level
+      # - is_deleted
+    additionalProperties: false
+additionalProperties: true
