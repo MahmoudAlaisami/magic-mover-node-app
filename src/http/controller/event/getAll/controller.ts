@@ -3,7 +3,7 @@ import { HttpStatusCode } from "axios";
 
 export default async (req, res, next) => {
   try {
-    const events = eventService.findAll();
+    const events = await eventService.findAll();
 
     res.status(HttpStatusCode.Ok).send({ success: true, payload: events });
   } catch (error) {

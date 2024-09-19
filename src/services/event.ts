@@ -12,18 +12,6 @@ const eventService = {
     }
   },
 
-  findOneById: async (id: string): Promise<IEvent> => {
-    try {
-      const event = await Event.findOne({ _id: id });
-      if (!event) {
-        throw new Error("Event not found");
-      }
-      return event;
-    } catch (error) {
-      throw new Error(`Failed to find Event: ${error.message}`);
-    }
-  },
-
   findActive: async (): Promise<IEvent[]> => {
     try {
       const events = await Event.find({ active: true });
@@ -36,7 +24,7 @@ const eventService = {
     }
   },
 
-  findMostCompleted: async (listNum: number): Promise<IMover | null> => {
+  findMostCompleted: async (listNum: number) => {
     try {
       const result = await Event.aggregate([
         {
@@ -63,7 +51,7 @@ const eventService = {
       if (result.length > 0) {
         const moverId = result[0]._id;
         const mover = await Mover.findById(moverId).exec();
-        return mover;
+        return { mover, completedCount: result[0].completedCount };
       }
 
       return null;
@@ -84,9 +72,9 @@ const eventService = {
 
   closeEvent: async (id: Schema.Types.ObjectId): Promise<IEvent> => {
     try {
-      console.log('.... ',id);
+      console.log(".... ", id);
       const event = await Event.findOne({ _id: id });
-      console.log('.... ',{event});
+      console.log(".... ", { event });
       let updatedEvent: IEvent | null;
       if (!event?.end_date) {
         updatedEvent = await Event.findByIdAndUpdate(
@@ -109,7 +97,7 @@ const eventService = {
 
       if (!updatedEvent) throw new Error("Something went wrong");
 
-      console.log('.... updatedEvent',updatedEvent);
+      console.log(".... updatedEvent", updatedEvent);
       return updatedEvent;
     } catch (error) {
       throw new Error(`Ending Event failed: ${error.message}`);

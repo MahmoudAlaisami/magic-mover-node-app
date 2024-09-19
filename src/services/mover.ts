@@ -47,11 +47,6 @@ const moverService = {
 
   update: async (mover: IMover, sateId: string, isConsuming: boolean, item?: string): Promise<IMover> => {
     try {
-      // console.log(".... new state", sateId);
-      // const mover = await Mover.findOne({ _id: mover._id, is_deleted: false });
-      // if (!mover) throw new Error("Invalid Mover");
-      // const { level, weight_limit, energy, item_carried, is_deleted } = mover;
-
       const updatedMover = await Mover.findByIdAndUpdate(
         mover._id,
         {

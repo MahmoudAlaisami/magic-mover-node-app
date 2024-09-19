@@ -2,6 +2,7 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import moverRouter from "./http/routes/mover"
 import itemRouter from "./http/routes/item";
+import eventRouter from "./http/routes/event";
 
 const createApp = () => {
   const app: Express = express();
@@ -17,6 +18,7 @@ const createApp = () => {
 
   app.use("/api/mover", moverRouter)
   app.use("/api/item", itemRouter)
+  app.use("/api/event", eventRouter)
 
 
 

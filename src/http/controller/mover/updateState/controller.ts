@@ -34,7 +34,6 @@ export default async (req, res, next) => {
       if(mover.energy < 20) {
         return res.status(HttpStatusCode.BadRequest).send({ success: false, payload: "Not enough Energy!"})
       }
-      await moverService.consumeEnergy(mover._id.toString())
     }
 
     const event = await eventService.create({

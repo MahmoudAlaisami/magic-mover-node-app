@@ -38,4 +38,4 @@ export default async (req, res, next) => {
 // I will manipulate the type of magic_mover_id to be ObjectId or string
 // issue link:
 // https://github.com/Automattic/mongoose/issues/12537
-// time wasted: 5 hrs
+// time wasted: > 5 hrs
