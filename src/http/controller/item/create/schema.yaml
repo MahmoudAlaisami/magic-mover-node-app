@@ -5,11 +5,11 @@ properties:
         type: string
       weight:
         type: number
-      laoding_time:
+      loading_time:
         type: number
     required:
-      - username
+      - name
       - weight
-      - laoding_time
+      - loading_time
     additionalProperties: false
 additionalProperties: true

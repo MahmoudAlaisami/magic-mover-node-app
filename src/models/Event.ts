@@ -20,7 +20,7 @@ const EventSchema: Schema<IEvent> = new Schema({
   magic_item_id: {
     type: Schema.Types.ObjectId,
     ref: "Item",
-    required: [true, "magic item id cannot be empty"],
+    // required: [true, "magic item id cannot be empty"],
   },
   start_date: {
     type: Date,
@@ -28,7 +28,7 @@ const EventSchema: Schema<IEvent> = new Schema({
   },
   end_date: {
     type: Date,
-    required: [true, "end date cannot be empty"],
+    // required: [true, "end date cannot be empty"],
   }
 });
 

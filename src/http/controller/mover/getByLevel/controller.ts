@@ -5,9 +5,9 @@ import newMover from "../../../../utils/constants/mover";
 export default async (req, res, next) => {
   try {
     const { level } = req.params;
-    const movers = moverService.findByLevel(level);
+    const movers = await moverService.findByLevel(level);
 
-    res.status(HttpStatusCode.Created).send({ success: true, payload: movers });
+    res.status(HttpStatusCode.Ok).send({ success: true, payload: movers });
   } catch (error) {
     res
       .status(HttpStatusCode.InternalServerError)

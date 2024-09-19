@@ -17,12 +17,12 @@ const MoverSchema: Schema<IMover> = new Schema({
     required: [true, "energy cannot be empty"],
   },
   state: {
-    type: String,
-    enum: ["resting", "ready", "loading", "in mission", "mission done"],
-    required: [true, "state cannot be empty"],
+    type: Schema.Types.ObjectId,
+    ref: "Event",
+    default: null
   },
   item_carried: {
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId ,
     ref: "Item",
     default: null
   },

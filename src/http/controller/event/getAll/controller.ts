@@ -1,12 +1,11 @@
-import itemService from "../../../../services/item";
+import eventService from "../../../../services/event";
 import { HttpStatusCode } from "axios";
 
 export default async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const item = await itemService.restore(id);
+    const events = eventService.findAll();
 
-    res.status(HttpStatusCode.Ok).send({ success: true, payload: item });
+    res.status(HttpStatusCode.Ok).send({ success: true, payload: events });
   } catch (error) {
     res
       .status(HttpStatusCode.InternalServerError)

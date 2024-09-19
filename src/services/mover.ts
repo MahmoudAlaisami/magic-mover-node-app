@@ -1,6 +1,7 @@
 import Mover from "../models/Mover";
 import { IMover } from "../utils/types/models.t";
 import newMover from "../utils/constants/mover";
+import { ObjectId } from "mongoose";
 
 const moverService = {
   findAll: async (): Promise<IMover[]> => {
@@ -35,7 +36,7 @@ const moverService = {
     }
   },
 
-  create: async (data: Partial<IMover>): Promise<IMover> => {
+  create: async (data) => {
     try {
       const mover = await Mover.create(data);
       return mover;
@@ -44,19 +45,19 @@ const moverService = {
     }
   },
 
-  updateState: async (id: string, newState: string): Promise<IMover> => {
+  updateState: async (mover: IMover, sateId: string): Promise<IMover> => {
     try {
-      const mover = await Mover.findOne({ _id: id, is_deleted: false });
-      if (!mover) throw new Error("Invalid Mover");
+      // console.log(".... new state", sateId);
+      // const mover = await Mover.findOne({ _id: mover._id, is_deleted: false });
+      // if (!mover) throw new Error("Invalid Mover");
+      // const { level, weight_limit, energy, item_carried, is_deleted } = mover;
 
-      const { state, ..._mover } = mover;
       const updatedMover = await Mover.findByIdAndUpdate(
-        id,
+        mover._id,
         {
-          ..._mover,
-          state: newState,
+          state: sateId,
         },
-        { new: true }
+        { new: true },
       );
       if (!updatedMover) throw new Error("Something went wrong");
 
@@ -78,7 +79,7 @@ const moverService = {
           ..._mover,
           item: newItem,
         },
-        { new: true }
+        { new: true },
       );
       if (!updatedMover) throw new Error("Something went wrong");
 
@@ -111,7 +112,7 @@ const moverService = {
           level: nextLevel,
           is_deleted: false,
         },
-        { new: true }
+        { new: true },
       );
       if (!updatedMover) throw new Error("Something went wrong");
 
@@ -144,7 +145,7 @@ const moverService = {
           level: previousLevel,
           is_deleted: false,
         },
-        { new: true }
+        { new: true },
       );
       if (!updatedMover) throw new Error("Something went wrong");
 
@@ -161,7 +162,7 @@ const moverService = {
         {
           is_deleted: true,
         },
-        { new: true }
+        { new: true },
       );
       if (!mover) throw new Error("Something went wrong");
 
@@ -178,7 +179,7 @@ const moverService = {
         {
           is_deleted: false,
         },
-        { new: true }
+        { new: true },
       );
       if (!mover) throw new Error("Something went wrong");
 

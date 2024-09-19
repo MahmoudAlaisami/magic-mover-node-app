@@ -5,9 +5,9 @@ import newMover from "../../../../utils/constants/mover";
 export default async (req, res, next) => {
   try {
     const { id } = req.body;
-    const mover = moverService.softDelete(id);
+    const mover = await moverService.softDelete(id);
 
-    res.status(HttpStatusCode.Created).send({ success: true, payload: mover });
+    res.status(HttpStatusCode.Ok).send({ success: true, payload: mover });
   } catch (error) {
     res
       .status(HttpStatusCode.InternalServerError)

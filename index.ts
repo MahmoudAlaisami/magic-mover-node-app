@@ -8,7 +8,6 @@ const startApp = () => {
     connectDb(mongoURI, dbName);
     const app = createApp();
     createServer(app, port);
-    console.log(".... started");
   } catch (error) {
     console.log("Error starting app:\n", error);
   }

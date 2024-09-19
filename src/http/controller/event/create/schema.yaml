@@ -1,16 +1,15 @@
 properties:
   body:
-    type: object
     properties:
       name:
         type: string
       weight:
         type: number
-      loading_time:
+      laoding_time:
         type: number
     required:
-      - name
+      - username
       - weight
-      - loading_time
+      - laoding_time
     additionalProperties: false
 additionalProperties: true

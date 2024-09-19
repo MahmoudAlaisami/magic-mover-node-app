@@ -5,9 +5,9 @@ export default async (req, res, next) => {
   try {
     const { name, weight, loading_time } = req.body;
     const is_deleted = false;
-    const item = itemService.create({ name, weight, loading_time, is_deleted });
+    const item = await itemService.create({ name, weight, loading_time, is_deleted });
 
-    res.status(HttpStatusCode.Created).send({ success: true, payload: item });
+    res.status(HttpStatusCode.Ok).send({ success: true, payload: item });
   } catch (error) {
     res
       .status(HttpStatusCode.InternalServerError)

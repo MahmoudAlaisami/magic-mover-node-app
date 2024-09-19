@@ -6,8 +6,13 @@ properties:
         type: string
       newState:
         type: string
+      magic_item_id:
+        oneOf:
+          - type: string
+          - type: "null"
     required:
       - id
       - newState
+      - magic_item_id
     additionalProperties: false
 additionalProperties: true

@@ -3,7 +3,7 @@ export default {
     level: 1,
     weight_limit: 40,
     energy: 100,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -11,7 +11,7 @@ export default {
     level: 2,
     weight_limit: 50,
     energy: 100,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -19,7 +19,7 @@ export default {
     level: 3,
     weight_limit: 60,
     energy: 110,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -27,7 +27,7 @@ export default {
     level: 4,
     weight_limit: 80,
     energy: 110,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -35,7 +35,7 @@ export default {
     level: 5,
     weight_limit: 100,
     energy: 110,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -43,7 +43,7 @@ export default {
     level: 6,
     weight_limit: 120,
     energy: 120,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -51,7 +51,7 @@ export default {
     level: 7,
     weight_limit: 140,
     energy: 120,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -59,7 +59,7 @@ export default {
     level: 8,
     weight_limit: 160,
     energy: 130,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -67,7 +67,7 @@ export default {
     level: 1,
     weight_limit: 180,
     energy: 140,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   },
@@ -75,7 +75,7 @@ export default {
     level: 10,
     weight_limit: 200,
     energy: 150,
-    state: "ready",
+    state: null,
     item_carried: null,
     is_deleted: false
   }
