@@ -1,0 +1,16 @@
+properties:
+  body:
+    type: object
+    properties:
+      name:
+        type: string
+      weight:
+        type: number
+      loading_time:
+        type: number
+    required:
+      - newState
+      - weight
+      - loading_time
+    additionalProperties: false
+additionalProperties: true

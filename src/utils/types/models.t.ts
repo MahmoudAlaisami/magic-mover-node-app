@@ -13,7 +13,7 @@ export interface IMover extends Document {
 export interface IItem extends Document {
   name: String;
   weight: Number;
-  loadingTime: {
+  loading_time: {
     [key: string]: number;
   };
   is_deleted: Boolean;

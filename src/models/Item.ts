@@ -1,6 +1,5 @@
 import { model, Schema, Model } from "mongoose";
 import { IItem } from "../utils/types/models.t";
-import { Mode } from "fs";
 
 const ItemSchema: Schema<IItem> = new Schema({
   name: {
@@ -9,7 +8,7 @@ const ItemSchema: Schema<IItem> = new Schema({
   weight: {
     type: Number,
   },
-  loadingTime: {
+  loading_time: {
     type: Map,
     of: Number
   },

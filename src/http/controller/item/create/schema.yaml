@@ -1,0 +1,15 @@
+properties:
+  body:
+    properties:
+      name:
+        type: string
+      weight:
+        type: number
+      laoding_time:
+        type: number
+    required:
+      - username
+      - weight
+      - laoding_time
+    additionalProperties: false
+additionalProperties: true
